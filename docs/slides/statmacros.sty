@@ -1,0 +1,151 @@
+\newcommand{\ssi}{m}            % initial sample size
+\newcommand{\tm}{t}             % time indicator
+\newcommand{\dat}{y}            % obs. data
+\newcommand{\DAT}{Y}            % random variable data
+\newcommand{\dt}{\dat_\tm}      % data at time 
+\newcommand{\DT}{\DAT_\tm}      % random variable at time
+\newcommand{\CCL}{W}            % random variable at time
+\newcommand{\CC}{C}              % control chart
+\newcommand{\II}{\mathcal{I}}    % IC region
+\newcommand{\OO}{\mathcal{R}}    % OC region
+\newcommand{\cS}{\mathcal{S}}    % Suspicious region
+\newcommand{\oo}{L}    % OC region limit
+
+\newcommand{\smp}[1][]{%
+   \ifthenelse{ \equal{#1}{} }
+     {\ensuremath{\dat_{-\ssi+1:\tm}}}
+      {\ensuremath{\dat_{-\ssi+1:#1}}}
+}
+
+\newcommand{\SMP}[1][]{%
+   \ifthenelse{ \equal{#1}{} }
+     {\ensuremath{\DAT_{-\ssi+1:\tm}}}
+      {\ensuremath{\DAT_{-\ssi+1:#1}}}
+}
+
+% Estimated parameter
+\newcommand{\gj}{\ensuremath{\vartheta}}
+\newcommand{\gje}[1][]{%
+   \ifthenelse{ \equal{#1}{} }
+     {\ensuremath{\tilde{\gj}_{\tm}}}
+      {\ensuremath{\tilde{\gj}_{#1}}}
+}
+\newcommand{\gjh}[1][]{%
+   \ifthenelse{ \equal{#1}{} }
+     {\ensuremath{\widehat{\gj}(\smp[\tm])}}
+      {\ensuremath{\widehat{\gj}(\smp[#1])}}
+}
+\newcommand{\GJH}[1]{\ensuremath{\widehat{\gj}(\SMP[#1])}}
+\newcommand{\hyp}[1]{\ensuremath{H_{#1, \tm}}}
+\renewcommand{\P}{P}
+
+\definecolor{amber}{rgb}{1.0, 0.49, 0.0}
+\newcommand{\TODO}{{\color{amber}\bfseries ToDo}\ }
+\newcommand{\code}[1]{\texttt{#1}} % style for code
+\newcommand{\matr}[1]{\boldsymbol{#1}} % matrix / vector bold
+\newcommand{\dotsim}{\overset{.}{\sim}} % asymptotically distr.
+\newcommand{\indep}{\perp\!\!\!\perp}   % independence
+\newcommand*\de{\partial}
+\newcommand{\vect}[1]{\begin{pmatrix}#1\end{pmatrix}}
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+% \newcommand{\C}{\mathbb{C}}
+
+
+\let\Im\relax
+\let\Pr\relax
+\newcommand{\Pr}{\mathbb{P}}
+\newcommand{\iid}{\overset{\text{iid}}{\sim}}
+\DeclareMathOperator{\Im}{Im}
+\DeclareMathOperator{\Dom}{Dom}
+\let\vec\relax
+\DeclareMathOperator{\vec}{vec}
+% Caligraphic alphabet
+% \newcommand{\tran}{^{\mkern-1.5mu\mathsf{T}}}
+\newcommand{\tran}{\ensuremath{^\top}}
+\newcommand{\ind}[1]{\mathbbm{1}_{#1}}      % Indicator function
+\newcommand{\one}{\mathbbm{1}}              % Indicator function
+\newcommand\rd{\:\mathrm{d}}
+\DeclareMathOperator{\rank}{rank}           % rank
+\DeclareMathOperator{\tr}{tr}               % trace
+\DeclareMathOperator{\pr}{Pr}               % Generic probability
+\DeclareMathOperator{\E}{\mathbb{E}}        % Generic expectation
+\DeclareMathOperator{\V}{\mathbb{V}}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\corr}{corr} % span
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\relint}{relint}
+\DeclareMathOperator{\cl}{cl}
+\DeclareMathOperator{\aff}{aff}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\KL}{KL}
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator*{\conv}{conv} % convex hull
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arcCot}
+\DeclareMathOperator{\arccsc}{arcCsc}
+\DeclareMathOperator{\arccosh}{arcCosh}
+\DeclareMathOperator{\arcsinh}{arcsinh}
+\DeclareMathOperator{\arctanh}{arctanh}
+\DeclareMathOperator{\arcsech}{arcsech}
+\DeclareMathOperator{\arccsch}{arcCsch}
+\DeclareMathOperator{\arccoth}{arcCoth} 
+\newcommand{\law}{\mathcal{L}}  % \law{X}, the measure associated with r.v. X
+\newcommand{\eps}{\varepsilon}
+
+% Convergence
+\DeclareMathOperator*{\convd}{\overset{\textit{d}}{\longrightarrow}} % convergence in distribution/law/measure
+\DeclareMathOperator*{\convp}{\overset{\textit{P}}{\longrightarrow}} % convergence in probability
+\DeclareMathOperator*{\convas}{\overset{\textrm{a.s.}}{\longrightarrow}} % convergence almost surely
+\DeclareMathOperator*{\plim}{plim}           % limit in probability
+
+\newcommand{\eqd}{\overset{d}{=}} % equal in distribution/law/measure
+
+%------------------------------------------------
+
+
+\newcommand{\BeginToDo}{\par
+	\moveleft 1cm \vbox{\color{red}\hrule width \dimexpr\linewidth+2cm\relax height 1.75pt}
+	\centerline{\color{red} \bfseries THE FOLLOWING CONTENT NEEDS REVISION}
+	\markboth{THIS PAGE CONTAINS STUFF TO BE REVISED}
+	{THIS PAGE CONTAINS STUFF TO BE REVISED}}
+\newcommand{\EndToDo}{\par
+	\centerline{\color{red} \bfseries ---end of to be revised text---} 
+	\moveleft 1cm \vbox{\color{red}\hrule width \dimexpr\linewidth+2cm\relax height 1.75pt}
+	\markboth {THIS PAGE CONTAINS STUFF TO BE REVISED}
+	{THIS PAGE CONTAINS STUFF TO BE REVISED}
+	\medskip}
+
+
+\DeclareFontFamily{U}{mathx}{\hyphenchar\font45}
+\DeclareFontShape{U}{mathx}{m}{n}{
+      <5> <6> <7> <8> <9> <10>
+      <10.95> <12> <14.4> <17.28> <20.74> <24.88>
+      mathx10
+      }{}
+\DeclareSymbolFont{mathx}{U}{mathx}{m}{n}
+\DeclareMathSymbol{\varprod}{1}{mathx}{"91}
+
+% Small dots for psmallmatrix
+\newcommand{\svdots}{\raisebox{3pt}{$\scalebox{.75}{\vdots}$}} 
+\newcommand{\sddots}{\raisebox{3pt}{$\scalebox{.75}{$\ddots$}$}}
+
+
+\DeclareUnicodeCharacter{0394}{$\Delta$}
+\DeclareUnicodeCharacter{03B3}{$\gamma$}
+\DeclareUnicodeCharacter{03A6}{$\Phi$}
+\DeclareUnicodeCharacter{03BC}{$\mu$}
+\DeclareUnicodeCharacter{03A3}{$\Sigma$}
+\DeclareUnicodeCharacter{03A5}{$\Upsilon$}
+\DeclareUnicodeCharacter{0393}{$\Gamma$}
+\DeclareUnicodeCharacter{0398}{$\Theta$}
+\DeclareUnicodeCharacter{03B1}{$\alpha$}
+\DeclareUnicodeCharacter{03BD}{$\nu$}
+\DeclareUnicodeCharacter{03D1}{$\vartheta$}

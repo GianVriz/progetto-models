@@ -1,0 +1,87 @@
+\RequirePackage{amsmath, amssymb, amsthm, mathtools}
+\RequirePackage[english]{babel}
+% \RequirePackage[utf8x]{inputenc}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\RequirePackage{tikz}
+\RequirePackage{amsmath}
+\RequirePackage{verbatim}
+\usetikzlibrary{arrows,shapes}
+\RequirePackage{adjustbox}
+\RequirePackage{dsfont}
+\RequirePackage{soul}
+\RequirePackage{listings}
+\setbeamertemplate{itemize item}{\color{darkred}$\blacksquare$}
+\RequirePackage{hyperref}
+\RequirePackage{bm}        % indicator function
+\RequirePackage{bbm}        % indicator function
+\RequirePackage{algorithm}
+\RequirePackage{algpseudocode} % algorithms
+\RequirePackage{relsize} % bigger/smaller commands
+\RequirePackage{caption}
+
+\algnewcommand{\Init}[1]{%
+  \State \textbf{Init:}
+  \Statex \hspace*{\algorithmicindent}\parbox[t]{.8\linewidth}{\raggedright #1}
+}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\newcommand{\algstring}{\iflanguage{italian}{Algoritmo}{Algorithm}}
+\floatname{algorithm}{\algstring}
+
+% Spacing inside algorithm
+\RequirePackage{etoolbox}
+\makeatletter
+\expandafter\patchcmd\csname\string\algorithmic\endcsname{\itemsep\z@}{\itemsep=0.1cm plus 1pt}{}{}
+\makeatother
+
+\RequirePackage{csquotes}
+\RequirePackage[
+	style=ext-authoryear,   % Allow sentencecase for titles only
+    dashed=false,
+	% style=bwl-FU,
+	giveninits=true,
+	maxbibnames=2,
+    maxcitenames=2,
+	url=false,
+	isbn =false,
+	doi=false,
+	eprint=true,
+	backend=biber,
+	natbib]
+	{biblatex}
+\ExecuteBibliographyOptions[online]{eprint=true}
+\AtEveryBibitem{\clearfield{month}}
+\AtEveryBibitem{\clearfield{day}}
+\AtEveryBibitem{\clearfield{language}}
+\DeclareFieldFormat{pages}{#1}
+% \DeclareFieldFormat*{titlecase:book}{\MakeSentenceCase{#1}}
+
+% Sentence case for titles
+% \DeclareFieldFormat
+%   [article,inbook,incollection,inproceedings,patent,thesis,unpublished]
+%   {titlecase:title}{\MakeSentenceCase*{#1}}
+\setlength\bibitemsep{0.7\baselineskip}
+\DeclareNameAlias{sortname}{last-first}
+
+% Hide jstor
+\AtEveryBibitem{%
+  \iffieldequalstr{eprinttype}{jstor}
+    {\clearfield{eprint}}
+    {}}
+%---- citation command: author (year)
+\DeclareCiteCommand{\tcite}
+  {\boolfalse{cbx:parens}}
+  {\usebibmacro{citeindex}%
+   \ifboolexpr{ ( not test {\iffieldundef{prenote}} and
+                  test {\ifnumequal{\value{citecount}}{1}} ) or
+                ( not test {\iffieldundef{postnote}} and
+                  test {\ifnumequal{\value{citecount}}{\value{citetotal}}} ) }
+     {\usebibmacro{textcite}}
+     {\printtext[bibhyperref]{% Apply citation link to bibmacro output
+        \DeclareFieldAlias{bibhyperref}{default}% Prevent nested hyperlinks
+        \usebibmacro{textcite}%
+        \ifbool{cbx:parens}{\bibcloseparen\global\boolfalse{cbx:parens}}{}}}}
+  {\ifbool{cbx:parens}{\bibcloseparen\global\boolfalse{cbx:parens}}{}%
+   \multicitedelim}
+  {\usebibmacro{textcite:postnote}}
