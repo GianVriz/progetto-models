@@ -1,0 +1,78 @@
+%% Creator: Inkscape inkscape 0.92.5, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'bintree.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{993.55481245bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.38717403)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0.42551593,0.38259745){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$(\pi_{0,1}, \bm{\vartheta}_{0,1})$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{bintree.pdf}}%
+    \put(0.19059681,0.28420486){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$(\pi_{1,1}, \bm{\vartheta}_{1,1})$\end{tabular}}}}%
+    \put(0.65012889,0.28307133){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$(\pi_{1,2}, \bm{\vartheta}_{1,2})$\end{tabular}}}}%
+    \put(0.18554854,0.31281667){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.54885548\unitlength}\raggedright \end{minipage}}}%
+    \put(0.05807335,0.15058652){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$(\pi_{2,1}, \bm{\vartheta}_{2,1})$\end{tabular}}}}%
+    \put(0.28425454,0.14982746){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$(\pi_{2,2}, \bm{\vartheta}_{2,2})$\end{tabular}}}}%
+    \put(0.51759441,0.15058652){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$(\pi_{2,3}, \bm{\vartheta}_{2,3})$\end{tabular}}}}%
+    \put(0.76449143,0.15051173){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$(\pi_{2,4}, \bm{\vartheta}_{2,4})$\end{tabular}}}}%
+    \put(-0.00904047,0.006206){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$(\pi_{3,1}, \bm{\vartheta}_{3,1})$\end{tabular}}}}%
+    \put(0.11142199,0.00620609){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$(\pi_{3,2}, \bm{\vartheta}_{3,2})$\end{tabular}}}}%
+    \put(0.72993196,0.00649515){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$(\pi_{3,7}, \bm{\vartheta}_{3,7})$\end{tabular}}}}%
+    \put(0.84304316,0.00649524){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$(\pi_{3,8}, \bm{\vartheta}_{3,8})$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{bintree.pdf}}%
+    \put(0.23296388,0.00645188){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$(\pi_{3,3}, \bm{\vartheta}_{3,3})$\end{tabular}}}}%
+    \put(0.34903163,0.00645197){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$(\pi_{3,4}, \bm{\vartheta}_{3,4})$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{bintree.pdf}}%
+    \put(0.47833908,0.00655628){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$(\pi_{3,5}, \bm{\vartheta}_{3,5})$\end{tabular}}}}%
+    \put(0.59629947,0.00655636){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$(\pi_{3,6}, \bm{\vartheta}_{3,6})$\end{tabular}}}}%
+    \put(0.80905489,-0.00667218){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l} \end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{bintree.pdf}}%
+  \end{picture}%
+\endgroup%
