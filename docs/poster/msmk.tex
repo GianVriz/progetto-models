@@ -65,7 +65,7 @@
 }
 
 \usepackage{statmacros}
-\usepackage{useful-packages}
+% \usepackage{useful-packages}
 \begin{document}
 
 %----------------------------------------------------------------------------------------
@@ -162,13 +162,13 @@ R_{\mbox{\textsc{a}}}(x,a) &=&  \mbox{pr}(y \leq a \mid x)- \mbox{pr}(y \leq a \
 \color{Black}
 
 \begin{itemize}
-    \item[] Multiscale model define a mixture of increasingly concentrated kernels, e.g.
+    \item[] Multiscale models define a mixture of increasingly concentrated kernels of the form
 
         \[
             f(y) = \sum_{s=0}^{\infty }\sum_{h=1}^{2^{s}} \pi_{s,h} \mathcal{K}(y; \bm{\mu}_{s,h}, \Omega_{s,h}),
         \]
 
-        where $(s,h)$ \textbf{corresponds to a node of a binary tree} and $ \mathcal{K}$ is a multivariate scale and location kernel.
+        where each $(s,h)$ \textbf{corresponds to a node of a binary tree} and $ \mathcal{K}$ is a multivariate scale and location kernel.
         
     \item[] $ \mathcal{K}$ is \textbf{increasingly concentrated} as $ s$ increases, and the location parameter $ \bm{\mu}_{s,h}$ should \textbf{span the whole space} as $ h$ moves between the values $ 1, \ldots, 2^{s}$.
 
