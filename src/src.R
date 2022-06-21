@@ -16,3 +16,7 @@ library(contextual)
 save_png = function(filename, ...){
     png(filename, width=1280, height=768, res=120, ...)
 }
+
+
+
+
