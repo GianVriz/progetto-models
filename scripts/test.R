@@ -7,8 +7,8 @@ for (f in list.files("src", pattern="*.R")) {
 dataset = "men"
 dat = read.csv(ffData("open_bandit_dataset", "random", dataset, paste0(dataset, ".csv")))
 
-horizon     <- NROW(dat)
-simulations <- 1
+horizon     = NROW(dat)
+simulations = 1
 
 # Set up formula:       y      ~ z    | x1 + x2 + ..
 # In bandit parlance:   reward ~ arms | covariates
@@ -26,11 +26,11 @@ agents  <- list(
                 Agent$new(ThompsonSamplingPolicy$new(), bandit, "TS"),
                 Agent$new(UCB1Policy$new(), bandit, "UCB1"),
                 Agent$new(UCB2Policy$new(), bandit, "UCB2"),
-                Agent$new(RandomPolicy$new(), bandit, "Random")
+                Agent$new(RandomPolicy$new(), bandit, "Random"),
                 Agent$new(LinUCBDisjointOptimizedPolicy$new(0.01), bandit, "LinUCB 0.01"),
                 Agent$new(LinUCBDisjointOptimizedPolicy$new(0.05), bandit, "LinUCB 0.05"),
                 Agent$new(LinUCBDisjointOptimizedPolicy$new(0.1),  bandit, "LinUCB 0.1"),
-                Agent$new(LinUCBDisjointOptimizedPolicy$new(1.0),  bandit, "LinUCB 1.0"),
+                Agent$new(LinUCBDisjointOptimizedPolicy$new(1.0),  bandit, "LinUCB 1.0")
                 )
 
 
@@ -54,3 +54,7 @@ save_png(filename=ffPlots("cumulative-reward.png"))
 plot(history, type = "cumulative", regret = FALSE, rate = TRUE,
      legend_position = "topright", ylim = ylim, xlab = "time")
 dev.off()
+
+history$get_arm_choice_percentage("LinUCB 0.05")
+
+save(history, file=ffData("sims", "history-test.RData"))
