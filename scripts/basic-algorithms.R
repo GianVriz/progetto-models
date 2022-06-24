@@ -23,7 +23,7 @@ bandit = NULL                   # type of bandit
 
 if(type == "simulated"){
     savedir = "simulated-basic-algorithms"
-    horizon = 50000
+    horizon = 30000
     simulations = 100
 
     # Simulate data by sampling rewards using the marginal probabilities of the observed item_id's
@@ -33,7 +33,7 @@ if(type == "simulated"){
 } else if (type == "real") {
     #! Warning: takes a long time
     savedir = "basic-algorithms"
-    horizon = NROW(data)
+    horizon = NROW(dat)
     simulations = 100
 
     # Instantiate Replay Bandit (Li, 2010) for i.i.d. sampled data
@@ -57,32 +57,48 @@ agents <- list(
     Agent$new(UCB2Policy$new(), bandit, "UCB2")
 )
 
+done = list.files(ffData("sims", savedir), pattern="history*")
 
-# Instantiate a Simulator
-# OfflineReplay (for "real" simulations):
-#            t_over_sims: if left to default, randomly splits the dataset into smaller portions
-#            to use for simulations
+if(length(done) < simulations){
+    for(i in 1:(simulations - length(done))){
+        seed = sample(1:10^6, size=1)
+        # Instantiate a Simulator
+        # OfflineReplay (for "real" simulations):
+        #            t_over_sims: if left to default, randomly splits the dataset into smaller portions
+        #            to use for simulations
+        simulation <- Simulator$new(agents,
+            horizon = horizon,
+            simulations = 1,
+            do_parallel = TRUE,
+            set_seed = seed
+        )
+        # Run the simulation
+        history <- simulation$run()
 
-simulation <- Simulator$new(agents,
-    horizon = horizon,
-    simulations = simulations,
-    do_parallel = TRUE
-)
-
-# Run the simulation
-history <- simulation$run()
-
-# Save results
-sims_directory = ffData("sims", savedir)
-if (!dir.exists(sims_directory)){
-    dir.create(sims_directory, recursive=T)
-} else {
-    print("Dir already exists!")
+        # Save results
+        sims_directory = ffData("sims", savedir)
+        if (!dir.exists(sims_directory)){
+            dir.create(sims_directory, recursive=T)
+        } else {
+            print("Dir already exists!")
+        }
+        savename = format(Sys.time(), "%Y-%m-%d_%H-%M-%S")
+        save(history, file = ffData("sims", savedir, paste0("history-", savename, ".RData")))
+        save(seed, file = ffData("sims", savedir, paste0("seed-", savename, ".Rdata")))
+        print("Saved data.")
+    }
 }
-history$save(ffData("sims", savedir, paste0(format(Sys.time(), "%Y-%m-%d_%H-%M-%S"), ".RData")))
-print("Saved data.")
 
-# TODO: plot history results. Perhaps add pointwise confidence bands?...
+done = list.files(ffData("sims", savedir), pattern="history*")
+out = NULL
+for(i in 1:length(done)){
+    load(ffData("sims", savedir, done[i]))
+    tmp = history$get_data_frame()
+    tmp$sims = i
+    out = rbind(out, tmp)
+}
+
+# TODO: plot history results. We should plot the means and perhaps add pointwise confidence bands
 plots_directory = ffPlots(savedir)
 if (!dir.exists(plots_directory)){
     dir.create(plots_directory, recursive = T)
@@ -90,6 +106,9 @@ if (!dir.exists(plots_directory)){
     print("Dir already exists!")
 }
 save_png(filename = ffPlots(savedir, "cumulative-reward.png"))
+
+#! Example of plot for a single history file. We should plot using the `out` data frame instead.
+#! Maybe copy the function that does the plot in the package repository to start?
 plot(history,
     type = "cumulative", regret = FALSE, rate = TRUE,
     legend_position = "topright", ylim = c(0,0.01), xlab = "time")
