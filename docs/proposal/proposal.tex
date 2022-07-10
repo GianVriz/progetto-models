@@ -33,6 +33,7 @@ Considering the campaign for male users (\texttt{Men}), the data currently consi
     \item \texttt{click}: target variable that indicates if an item was clicked (1) or not (0).
     \item \texttt{position}: the position of an item being recommended (1, 2, or 3 correspond to left, center, and right position of the ZOZOTOWN recommendation interface, respectively).
     \item  \texttt{user feature 0-4}: user-related feature values.
+    \item \texttt{propensity score}: the probability of an item being recommended at each position.
 \end{itemize}
 
 
@@ -43,9 +44,10 @@ Given the struture of the datasets, our first goal is to compare standard multi-
     \item We use the \texttt{random} dataset, which has been collected by randomly proposing the items, as a proxy of the population and then apply the multi-armed bandit methods multiple times to obtain a distribution of the algorithm performance.
     Perhaps we can also incorporate multiple bootstrap replicates from the dataset to also include variability due to the sampling from the target population.
     
-    \item  The analysis will first compare a completely random strategy with bandit algorithms that do not leverage covariate information, such as standard Thompson sampling and UCB algorithms.
+    \item  The analysis will first compare a completely random strategy with bandit algorithms that do not leverage covariate information, such as standard Thompson sampling and UCB algorithms. We will compare different algorithm to see which one maximize the cumulative distribution function of click rate.
     
-    \item Each algorithm will be compared with the ground truth given by the population dataset over multiple runs in order to obtain a distribution of the algorithm performance. 
+    \item We will perform a simulation study and compare the results with the ones obtained with the real data, in order to evaluate any differences and outline possible suggestions about how to improve the simulation framework.
+    
     
     \item Finally, as a possible extension, a regression-based algorithm (contextual bandit methods) may leverage the available user or item covariates in order to improve the algorithm performance. 
 \end{enumerate}
