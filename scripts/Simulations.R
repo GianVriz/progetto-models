@@ -12,7 +12,7 @@ library(ggplot2)
 library(useful)
 memory.limit(size = 50000)
 
-savedir = "simulated-basic-algorithms2"
+savedir = "simulated-basic-algorithms_Final"
 done = list.files(ffData("sims", savedir), pattern="history*")
 out = NULL
 for(i in 1:length(done)){
@@ -69,7 +69,7 @@ ggplot(data = df_plot, aes(
   y = med,
   group = agent,
   colour = agent
-)) + geom_line()+labs(y = "Cumulative Reward Rate", x = "Time") + ggtitle("Simulation")
+)) + geom_line()+labs(y = "Cumulative Reward Rate", x = "Time") + ggtitle("Simulations") + theme(plot.title = element_text(hjust = 0.5))
 
 last = df_plot$med[df_plot$t == max(df_plot$t)]
 
@@ -92,3 +92,4 @@ for (i in 1:length(top)) {
 
 library(gridExtra)
 do.call("grid.arrange", c(plts, ncol=2))
+
