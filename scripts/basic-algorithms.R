@@ -94,9 +94,13 @@ out = NULL
 for(i in 1:length(done)){
     load(ffData("sims", savedir, done[i]))
     tmp = history$get_data_frame()
-    tmp$sims = i
-    out = rbind(out, tmp)
+    out = cbind(out, tmp$cum_reward_rate)
 }
+i = 1
+load(ffData("sims", savedir, done[i]))
+df = history$get_data_frame()
+df$cum_reward_rate = NULL
+cbind(df, out)
 
 # TODO: plot history results. We should plot the means and perhaps add pointwise confidence bands
 plots_directory = ffPlots(savedir)

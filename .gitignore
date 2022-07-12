@@ -1,5 +1,5 @@
 /data/open_bandit_dataset
-
+/data/**/*.Rdata
 
 # History files
 .Rhistory
